@@ -1,6 +1,6 @@
-import "./App.css";
+import "./styles/global.scss";
 
-import BaseLayout from "./components/BaseLayout.jsx";
+import BaseLayout from "./containers/BaseLayout.jsx";
 
 function App() {
   return (
