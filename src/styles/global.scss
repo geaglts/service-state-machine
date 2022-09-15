@@ -10,6 +10,11 @@ body {
   background-color: $light-color;
   font-family: $primary-font;
   font-size: 14pt;
+  background: url("../assets/images/background.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 h1,

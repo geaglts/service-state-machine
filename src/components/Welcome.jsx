@@ -11,7 +11,11 @@ const Welcome = ({ send }) => {
     <div className={styles.container}>
       <p>Bienvenido a esta maquina de estado.</p>
       <p>Puedes pedir un servicio o cancelarlo si lo deseas.</p>
-      <Button label={"Quiero un servicio :D"} action={sendToProcessing} />
+      <Button
+        label={"Quiero un servicio :D"}
+        type="button"
+        action={sendToProcessing}
+      />
     </div>
   );
 };

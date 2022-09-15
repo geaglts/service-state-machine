@@ -9,15 +9,11 @@
   padding: 16px;
 }
 
-.content {
-  @extend .spaces;
-  background-color: $background-color;
-}
-
 .header {
   @extend .spaces;
   text-align: center;
-  background-color: #b1b2ff;
+  background: rgba($primary-color, 0.8);
+  backdrop-filter: blur(8px);
 
   display: flex;
   align-items: center;
@@ -26,4 +22,10 @@
   h1 {
     font-family: "Nabla", cursive;
   }
+}
+
+.content {
+  @extend .spaces;
+  background: rgba($background-color, 0.8);
+  backdrop-filter: blur(8px);
 }

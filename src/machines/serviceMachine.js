@@ -7,25 +7,13 @@ const serviceMachine = createMachine({
   states: {
     init: {
       on: {
-        NEW_SERVICE: "processing",
-      },
-    },
-    processing: {
-      on: {
-        CANCEL: "init",
-        ACCEPTED: "save_requirements",
+        NEW_SERVICE: "save_requirements",
       },
     },
     save_requirements: {
       on: {
-        SAVED: "making",
+        SAVED: "set_pay",
         CANCEL: "init",
-      },
-    },
-    making: {
-      on: {
-        FIND_ERROR: "processing",
-        COMPLETED: "set_pay",
       },
     },
     set_pay: {

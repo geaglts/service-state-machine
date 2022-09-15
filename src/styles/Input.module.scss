@@ -1,0 +1,14 @@
+@use "shared" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    @extend .label;
+  }
+
+  input {
+    @extend .input;
+  }
+}

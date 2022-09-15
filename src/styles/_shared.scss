@@ -1,0 +1,26 @@
+@use "vars" as *;
+
+.label {
+  font-size: 11pt;
+  text-transform: capitalize;
+  font-weight: $font-weight-bold;
+  font-family: $primary-font;
+  color: $dark-color;
+  margin-bottom: 8px;
+}
+
+.input {
+  border: none;
+  background-color: transparent;
+  height: 40px;
+  background-color: $light-color;
+  border-radius: 4px;
+  font-size: 13pt;
+  font-family: $primary-font;
+  padding-left: 16px;
+  color: $dark-color;
+
+  &:focus {
+    outline: 2px solid $primary-color;
+  }
+}

@@ -1,5 +1,5 @@
 import Welcome from "../components/Welcome.jsx";
-import Processing from "../components/Processing.jsx";
+import SaveRequirements from "../components/SaveRequirements.jsx";
 
 import Button from "../commons/Button.jsx";
 
@@ -8,7 +8,8 @@ import styles from "../styles/StepsLayout.module.scss";
 const StepsLayout = ({ state, send }) => {
   const renderContent = () => {
     if (state.matches("init")) return <Welcome send={send} />;
-    if (state.matches("processing")) return <Processing send={send} />;
+    if (state.matches("save_requirements"))
+      return <SaveRequirements send={send} />;
     return null;
   };
 
@@ -25,6 +26,7 @@ const StepsLayout = ({ state, send }) => {
           <Button
             label={"Cancelar"}
             action={handleCancel}
+            type={"button"}
             styleButton="danger"
           />
         )}

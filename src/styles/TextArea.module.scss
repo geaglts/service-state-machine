@@ -1,0 +1,19 @@
+@use "vars" as *;
+@use "shared" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    @extend .label;
+  }
+
+  textarea {
+    @extend .input;
+    height: 100%;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    resize: none;
+  }
+}
