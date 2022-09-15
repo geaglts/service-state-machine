@@ -1,8 +1,11 @@
 import styles from "../styles/Button.module.scss";
 
-const Button = ({ label, action }) => {
+const Button = ({ label, action, styleButton = "normal" }) => {
   return (
-    <button className={styles.container} onClick={action}>
+    <button
+      className={`${styles.container} ${styles[styleButton]}`}
+      onClick={action}
+    >
       {label}
     </button>
   );

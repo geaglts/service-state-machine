@@ -12,7 +12,7 @@ const serviceMachine = createMachine({
     },
     processing: {
       on: {
-        BAD_REQUEST: "init",
+        CANCEL: "init",
         ACCEPTED: "save_requirements",
       },
     },

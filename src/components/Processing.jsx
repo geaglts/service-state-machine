@@ -1,7 +1,7 @@
-const Processing = () => {
+const Processing = ({ send }) => {
   return (
     <div>
-      <h2>Processing</h2>
+      <h2>Procesando tu pedido</h2>
     </div>
   );
 };

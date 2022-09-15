@@ -1,0 +1,29 @@
+@use "vars" as *;
+
+.container {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.spaces {
+  padding: 16px;
+}
+
+.content {
+  @extend .spaces;
+  background-color: $background-color;
+}
+
+.header {
+  @extend .spaces;
+  text-align: center;
+  background-color: #b1b2ff;
+
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
+
+  h1 {
+    font-family: "Nabla", cursive;
+  }
+}

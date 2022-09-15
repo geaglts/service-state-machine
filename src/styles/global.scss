@@ -1,3 +1,5 @@
+@use "vars" as *;
+
 * {
   margin: 0;
   padding: 0;
@@ -5,5 +7,21 @@
 }
 
 body {
-  background-color: #fafafa;
+  background-color: $light-color;
+  font-family: $primary-font;
+  font-size: 14pt;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $font-weight-bold;
+  color: $dark-color;
+}
+
+p {
+  color: $dark-color;
 }

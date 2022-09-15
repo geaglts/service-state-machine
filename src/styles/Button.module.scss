@@ -1,7 +1,33 @@
+@use "vars" as *;
+
 .container {
   border: none;
-  padding: 0.4em 0.8em;
+  padding: 0 16px;
+  height: 40px;
   border-radius: 4px;
   font-size: 12pt;
   cursor: pointer;
+  font-weight: bold;
+  font-family: $primary-font;
+  font-weight: $font-weight-bold;
+  color: $light-color;
+  transition: all 350ms ease-out;
+
+  &:hover {
+    background-color: rgba($light-color, 0.4);
+    color: $dark-color;
+    transition: all 250ms ease-in;
+  }
+}
+
+.normal {
+  background-color: $primary-color;
+}
+
+.success {
+  background-color: $success-color;
+}
+
+.danger {
+  background-color: $danger-color;
 }
