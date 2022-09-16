@@ -18,11 +18,16 @@ const serviceMachine = createMachine({
     },
     set_pay: {
       on: {
-        pay: "deliver",
+        PAY: "payment",
         CANCEL: "save_requirements",
       },
     },
-    deliver: {},
+    payment: {
+      on: {
+        CANCEL: "set_pay",
+        FINISH: "init",
+      },
+    },
   },
 });
 

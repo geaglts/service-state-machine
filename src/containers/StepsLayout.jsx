@@ -1,6 +1,7 @@
 import Welcome from "../components/Welcome.jsx";
 import SaveRequirements from "../components/SaveRequirements.jsx";
 import SetPay from "../components/SetPay.jsx";
+import Payment from "../components/Payment.jsx";
 
 import Button from "../commons/Button.jsx";
 
@@ -12,6 +13,7 @@ const StepsLayout = ({ state, send }) => {
     if (state.matches("save_requirements"))
       return <SaveRequirements send={send} />;
     if (state.matches("set_pay")) return <SetPay send={send} />;
+    if (state.matches("payment")) return <Payment send={send} />;
     return null;
   };
 
@@ -25,7 +27,8 @@ const StepsLayout = ({ state, send }) => {
         <h1>Maquina de estado</h1>
         {(state.matches("processing") ||
           state.matches("save_requirements") ||
-          state.matches("set_pay")) && (
+          state.matches("set_pay") ||
+          state.matches("payment")) && (
           <Button
             label={"Cancelar"}
             action={handleCancel}

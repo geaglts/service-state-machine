@@ -1,0 +1,17 @@
+@use "vars" as *;
+
+.container {
+  text-align: center;
+}
+
+.description_text {
+  margin: 0 auto;
+  width: 350px;
+  font-weight: bold;
+}
+
+.price {
+  margin: 16px 0;
+  font-size: 52pt;
+  font-family: $secondary-font;
+}

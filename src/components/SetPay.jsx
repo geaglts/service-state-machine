@@ -6,7 +6,7 @@ import styles from "../styles/SetPay.module.scss";
 const SetPay = ({ send }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Aceptando servicio");
+    send("PAY");
   };
 
   return (
