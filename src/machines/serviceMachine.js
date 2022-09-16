@@ -19,6 +19,7 @@ const serviceMachine = createMachine({
     set_pay: {
       on: {
         pay: "deliver",
+        CANCEL: "save_requirements",
       },
     },
     deliver: {},

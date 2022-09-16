@@ -8,11 +8,12 @@ const Processing = ({ send }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Aceptando servicio");
+    send("SAVED");
   };
 
   return (
     <div>
-      <h2>Procesando tu pedido</h2>
+      <h2>Cuéntanos que necesitas</h2>
       <form onSubmit={handleSubmit} className={styles.form}>
         <Input name={"applicant"} label={"Quien solicita el servicio"} />
         <Input name={"task"} label={"Que servicio se va a realizar"} />
@@ -21,7 +22,7 @@ const Processing = ({ send }) => {
           label="Cual es la descripcion del servicio"
           rows="4"
         />
-        <Button label={"Aceptar"} type="submit" />
+        <Button label={"Listo!"} type="submit" />
       </form>
     </div>
   );
