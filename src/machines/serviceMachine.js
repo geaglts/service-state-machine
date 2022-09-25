@@ -1,5 +1,5 @@
 // Metodo necesario para crear una maquina de estados
-import { createMachine } from "xstate";
+import { createMachine, assign } from "xstate";
 
 // Definicion de una maquina de estados
 /* Las maquinas de estados necesitan algunas
@@ -14,6 +14,10 @@ const serviceMachine = createMachine(
   {
     id: "serviceMachine",
     initial: "init",
+    context: {
+      service: {},
+      days: 0,
+    },
     predictableActionArguments: true,
     states: {
       init: {
@@ -34,19 +38,33 @@ const serviceMachine = createMachine(
         entry: "joinInSaveRequirements", // ACCION DE ENTRADA: AL MOMENTO DE ENTRAR AL ESTADO
         exit: "exitToSaveRequirements", // ACCION DE SALIDA: AL MOMENTO DE SALIR DEL ESTADO
         on: {
-          SAVED: "set_pay",
+          SAVED: {
+            target: "set_pay",
+            actions: assign({
+              service: (context, event) => event.service,
+            }),
+          },
           CANCEL: "init",
         },
       },
       set_pay: {
         on: {
-          PAY: "payment",
-          CANCEL: "save_requirements",
+          PAY: {
+            target: "payment",
+            actions: assign((context, event) => (context.days = event.days)),
+          },
+          CANCEL: {
+            target: "save_requirements",
+            actions: "removeRequirements",
+          },
         },
       },
       payment: {
         on: {
-          CANCEL: "set_pay",
+          CANCEL: {
+            target: "set_pay",
+            actions: assign({ days: () => 0 }),
+          },
           FINISH: "init",
         },
       },
@@ -66,6 +84,9 @@ const serviceMachine = createMachine(
       /* Se ejecuta cuando salgo de save_requirement */
       exitToSaveRequirements: () => {
         console.log("Sali del estado save_requirements");
+      },
+      removeRequirements(context, event) {
+        return (context.service = {});
       },
     },
   }

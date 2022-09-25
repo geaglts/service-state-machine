@@ -13,7 +13,7 @@ const StepsLayout = ({ state, send }) => {
     if (state.matches("save_requirements"))
       return <SaveRequirements send={send} />;
     if (state.matches("set_pay")) return <SetPay send={send} />;
-    if (state.matches("payment")) return <Payment send={send} />;
+    if (state.matches("payment")) return <Payment state={state} send={send} />;
     return null;
   };
 

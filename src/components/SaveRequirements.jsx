@@ -7,8 +7,16 @@ import styles from "../styles/SaveRequirements.module.scss";
 const Processing = ({ send }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Aceptando servicio");
-    send("SAVED");
+    const form = new FormData(e.target);
+    const service = Object.fromEntries(form);
+    const dataKeys = Object.keys(service);
+    for (let i = 0; i < dataKeys.length; i++) {
+      const key = dataKeys[i];
+      if (service[key] === "") {
+        return;
+      }
+    }
+    send("SAVED", { service });
   };
 
   return (

@@ -1,12 +1,19 @@
+import { useState } from "react";
 import Button from "../commons/Button";
 import Input from "../commons/Input";
 
 import styles from "../styles/SetPay.module.scss";
 
 const SetPay = ({ send }) => {
+  const [days, setDays] = useState(0);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    send("PAY");
+    send("PAY", { days });
+  };
+
+  const handleChangeDay = (e) => {
+    setDays(parseInt(e.target.value, 10));
   };
 
   return (
@@ -19,6 +26,8 @@ const SetPay = ({ send }) => {
           type="number"
           min="1"
           max="30"
+          onChange={handleChangeDay}
+          value={days}
         />
         <Button
           label={"Cuanto me costara?"}
