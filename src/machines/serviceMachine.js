@@ -60,6 +60,13 @@ const serviceMachine = createMachine(
         },
       },
       payment: {
+        // Con after: se puede definir un tiempo de espera para que se dispare un evento
+        after: {
+          4000: {
+            target: "init",
+            actions: "removeRequirements",
+          },
+        },
         on: {
           CANCEL: {
             target: "set_pay",
