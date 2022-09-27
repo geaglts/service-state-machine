@@ -1,5 +1,36 @@
 // Metodo necesario para crear una maquina de estados
 import { createMachine, assign } from "xstate";
+import { getAmericaCountries } from "../apis/countries";
+
+const loadCountriesMachine = {
+  id: "loadCountriesMachine",
+  initial: "loading",
+  states: {
+    loading: {
+      // invoke es una funcion que permite ejecutar una funcion asincrona
+      invoke: {
+        id: "getAmericaCountries",
+        src: () => getAmericaCountries,
+        onDone: {
+          target: "success",
+          actions: assign({
+            americaCountries: (_, event) => event.data,
+          }),
+        },
+        onError: {
+          target: "failure",
+          actions: assign({ error: (_, event) => "Error en el request" }),
+        },
+      },
+    },
+    success: {},
+    failure: {
+      on: {
+        RETRY: "loading",
+      },
+    },
+  },
+};
 
 // Definicion de una maquina de estados
 /* Las maquinas de estados necesitan algunas
@@ -17,6 +48,8 @@ const serviceMachine = createMachine(
     context: {
       service: {},
       days: 0,
+      americaCountries: [],
+      error: "",
     },
     predictableActionArguments: true,
     states: {
@@ -46,6 +79,7 @@ const serviceMachine = createMachine(
           },
           CANCEL: "init",
         },
+        ...loadCountriesMachine,
       },
       set_pay: {
         on: {

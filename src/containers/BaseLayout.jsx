@@ -8,6 +8,8 @@ import styles from "../styles/BaseLayout.module.scss";
 const BaseLayout = () => {
   const [state, send] = useMachine(serviceMachine);
 
+  console.log(state.context);
+
   return (
     <div className={styles.container}>
       <StepsLayout state={state} send={send} />

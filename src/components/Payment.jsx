@@ -13,15 +13,19 @@ const Payment = ({ state, send }) => {
   };
 
   useEffect(() => {
-    const { days } = state.context;
+    const { days, service } = state.context;
+    let price = DEFAULT_PRICE;
+    if (service.pais !== "Mexico") {
+      price += 1000;
+    }
     if (days > 5 && days < 11) {
-      const price = DEFAULT_PRICE - DEFAULT_PRICE * 0.1;
+      price -= DEFAULT_PRICE * 0.1;
       setPayment(price);
     } else if (days > 10) {
-      const price = DEFAULT_PRICE - DEFAULT_PRICE * 0.2;
+      price -= DEFAULT_PRICE * 0.2;
       setPayment(price);
     } else {
-      setPayment(DEFAULT_PRICE);
+      setPayment(price);
     }
   }, [state.context]);
 

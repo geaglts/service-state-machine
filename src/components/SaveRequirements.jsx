@@ -4,7 +4,7 @@ import TextArea from "../commons/TextArea";
 
 import styles from "../styles/SaveRequirements.module.scss";
 
-const Processing = ({ send }) => {
+const Processing = ({ state, send }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
@@ -30,6 +30,14 @@ const Processing = ({ send }) => {
           label="Cual es la descripcion del servicio"
           rows="4"
         />
+        <select name="pais" className={styles.countries}>
+          <option value="">A que pais lo enviaremos?</option>
+          {state.context.americaCountries.map((country) => {
+            return (
+              <option value={country.name.common}>{country.name.common}</option>
+            );
+          })}
+        </select>
         <Button label={"Listo!"} type="submit" />
       </form>
     </div>

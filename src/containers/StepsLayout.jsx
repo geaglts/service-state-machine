@@ -11,7 +11,7 @@ const StepsLayout = ({ state, send }) => {
   const renderContent = () => {
     if (state.matches("init")) return <Welcome send={send} />;
     if (state.matches("save_requirements"))
-      return <SaveRequirements send={send} />;
+      return <SaveRequirements state={state} send={send} />;
     if (state.matches("set_pay")) return <SetPay send={send} />;
     if (state.matches("payment")) return <Payment state={state} send={send} />;
     return null;
