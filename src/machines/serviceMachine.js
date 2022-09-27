@@ -86,6 +86,7 @@ const serviceMachine = createMachine(
           PAY: {
             target: "payment",
             actions: assign((context, event) => (context.days = event.days)),
+            cond: "payDayIsGreaterThanZero",
           },
           CANCEL: {
             target: "save_requirements",
@@ -128,6 +129,11 @@ const serviceMachine = createMachine(
       },
       removeRequirements(context, event) {
         return (context.service = {});
+      },
+    },
+    guards: {
+      payDayIsGreaterThanZero: (context, event) => {
+        return event.days > 0;
       },
     },
   }

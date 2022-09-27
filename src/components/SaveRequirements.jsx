@@ -34,7 +34,12 @@ const Processing = ({ state, send }) => {
           <option value="">A que pais lo enviaremos?</option>
           {state.context.americaCountries.map((country) => {
             return (
-              <option value={country.name.common}>{country.name.common}</option>
+              <option
+                key={`SAVE_REQUERIMENTS_${country.name.common}`}
+                value={country.name.common}
+              >
+                {country.name.common}
+              </option>
             );
           })}
         </select>
